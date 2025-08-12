@@ -1,22 +1,16 @@
 class Solution:
     def dividePlayers(self, skill: List[int]) -> int:
-        sorted_skills=sorted(skill)
-        left=0
-        pairs=[]
-        right=len(skill)-1
-        add_pairs=[]
-        while left<right:
-           
-            mult=sorted_skills[right]*sorted_skills[left]
-            add=sorted_skills[right]+sorted_skills[left]
-            pairs.append(mult)
-            add_pairs.append(add)
-            right-=1
-            left+=1
-        set1=set(add_pairs)
-        if len(set1)==1:
-            return sum(pairs)
-        else:
-            return -1
+        skill.sort()
+        total_sum = skill[0] + skill[-1]
+        total_product = 0
+        left, right = 0, len(skill) - 1
         
+        while left < right:
+            current_sum = skill[left] + skill[right]
+            if current_sum != total_sum:
+                return -1
+            total_product += skill[left] * skill[right]
+            left += 1
+            right -= 1
         
+        return total_product
