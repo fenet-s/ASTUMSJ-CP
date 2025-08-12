@@ -3,7 +3,6 @@ class Solution:
         sorted_skills=sorted(skill)
         left=0
         pairs=[]
-        mult=0
         right=len(skill)-1
         add_pairs=[]
         while left<right:
